@@ -46,7 +46,7 @@ void ft_set_pixel(t_benv *be)
 				e.i += 1;
 			}
 				be->data[(800 * e.y + e.x) * 4 + 1] = (50 + e.i * 1.5);
-				be->data[(800 * e.y + e.x) * 4 + 2] = 0 *(50 + e.i * 1.5);
+				be->data[(800 * e.y + e.x) * 4 + 2] = (50 + e.i * 1.5);
 				be->data[(800 * e.y + e.x) * 4 + 3] = (50 + e.i * 1.5);
 			e.y += 1;
 		}
