@@ -13,7 +13,6 @@ int	mouse_hook(int button, int x, int y, t_benv *be)
 	be->movey += ((double)y - (800 / 2)) * 0.00038 /
 		be->factor;
 	/* printf("   movex / %f \n", be->movey); */
-
 	}
 	if (button == 5)
 	{
@@ -22,7 +21,6 @@ int	mouse_hook(int button, int x, int y, t_benv *be)
 		(800 / 800) / be->factor;
 	be->movey -= ((double)y - (800 / 2)) * 0.00038 /
 		(800 / 800) / be->factor;
-
 	}
 	expose_hook(be);
 	return (0);
@@ -56,10 +54,11 @@ int	key_hook(int keycode, t_benv *be)
 	expose_hook(be);
 	return (0);
 }
+
 int coucou(t_benv be)
 {
 	ft_set_pixel(&be);
-	mlx_clear_window(be.mlx, be.win);
+//	mlx_clear_window(be.mlx, be.win);
 	mlx_put_image_to_window(be.mlx, be.win, be.img, 0, 0 );
 	return (0);
 }
