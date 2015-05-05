@@ -6,17 +6,16 @@
 /*   By: nidzik <nidzik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/01 16:59:46 by nidzik            #+#    #+#             */
-/*   Updated: 2015/05/01 18:35:26 by nidzik           ###   ########.fr       */
+/*   Updated: 2015/05/05 08:14:51 by nidzik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-t_env	ft_init_env(t_benv be)
+t_env	ft_init_env_ju(t_benv be)
 {
 	t_env e;
 
-	/* printf("factor = %f\n", be.factor);fflush(stdout); */
 	e.x1 = -1 ;
 	e.x2 = 1 ;
 	e.y1 = -1.2 ;
@@ -29,11 +28,11 @@ t_env	ft_init_env(t_benv be)
 	return (e);
 }
 
-void ft_set_pixel(t_benv *be)
+void ft_draw_ju(t_benv *be)
 {
 	t_env e;
 
-	e = ft_init_env(*be);
+	e = ft_init_env_ju(*be);
 	e.x = 0;
 	e.y = 0;
 	while (e.x < e.image_x)
@@ -41,12 +40,12 @@ void ft_set_pixel(t_benv *be)
 		e.y = 0;
 		while (e.y < e.image_y)
 		{
-			e.c_r = -0.6 + be->factorx1;
-			e.c_i = 0.27015 + be->factorx2;
+			e.c_r = be->factorx1; // -0.6
+			e.c_i = be->factorx2; // 0.27015;
 
 
 			e.z_r = 1.5 * (e.x - 400) / (0.5 * e.zoom * 800 )+ be->movex;
-			e.z_i = (e.y - 400) / (0.5 * e.zoom * 800 )+ be->movey;
+			e.z_i =1.5 *  (e.y - 400) / (0.5 * e.zoom * 800 )+ be->movey;
 			e.i = 0;
 			while ((e.z_r * e.z_r + e.z_i * e.z_i < 4 && e.i <
 							e.ite_max) || e.i == 0)
@@ -65,7 +64,7 @@ void ft_set_pixel(t_benv *be)
 			else 
 			{
 				be->data[(800 * e.y + e.x) * 4 + 1] = (50 + e.i * 1.5);
-				be->data[(800 * e.y + e.x) * 4 + 2] = 0*(50 + e.i * 1.5);
+				be->data[(800 * e.y + e.x) * 4 + 2] = (50 + e.i * 1.5);
 				be->data[(800 * e.y + e.x) * 4 + 3] = (50 + e.i * 1.5);
 			}
 			e.y += 1;

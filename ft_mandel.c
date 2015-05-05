@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fractol.c                                       :+:      :+:    :+:   */
+/*   ft_mandel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nidzik <nidzik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/05/01 16:58:08 by nidzik            #+#    #+#             */
-/*   Updated: 2015/05/01 17:48:11 by nidzik           ###   ########.fr       */
+/*   Created: 2015/05/05 08:10:56 by nidzik            #+#    #+#             */
+/*   Updated: 2015/05/05 08:11:59 by nidzik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-t_env	ft_init_env(t_benv be)
+t_env	ft_init_env_mandel(t_benv be)
 {
 	t_env e;
 
@@ -22,18 +22,18 @@ t_env	ft_init_env(t_benv be)
 	e.y1 = -1.2 + be.factory1;// - be.factor;
 	e.y2 = 1.3 - be.factory2;//+ be.factor;
 	e.zoom = (be.factor);
-	e.ite_max = 300; 
+	e.ite_max = 100; 
 	e.image_x = 800;//(e.x2 - e.x1) * e.zoom;
 	e.image_y = 800;// (e.y2 - e.y1) * e.zoom;
 	/* printf("%f, %f, %f, %f, %d, %d, %d, %d \n ",e.x1, e.x2, e.y1, e.y2, e.zoom, e.ite_max, e.image_x, e.image_y); */
 	return (e);
 }
 
-void ft_set_pixel(t_benv *be)
+void ft_draw_mandel(t_benv *be)
 {
 	t_env e;
 
-	e = ft_init_env(*be);
+	e = ft_init_env_mandel(*be);
 	e.x = 0;
 	e.y = 0;
 	while (e.x < e.image_x)
@@ -41,10 +41,10 @@ void ft_set_pixel(t_benv *be)
 		e.y = 0;
 		while (e.y < e.image_y)
 		{
-			e.c_r = 2 * (e.x - 800 / 2) /
-				(0.5 * be->factor * 800) + be->movex;
-			e.c_i = 2 * (e.y - 800 / 2) /
-				(0.5 * be->factor * 800) + be->movey;
+			e.c_r = 3 * (e.x - 800 / 2) /
+				( be->factor * 800) + be->movex;
+			e.c_i = 3 * (e.y - 800 / 2) /
+				( be->factor * 800) + be->movey;
 			e.z_r = 0;
 			e.z_i = 0;
 			e.i = 0;

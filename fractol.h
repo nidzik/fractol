@@ -47,15 +47,24 @@ typedef struct	s_benv
 	double		factory2;
 	double			movex;
 	double			movey;
+	int			stop;
 }		t_benv;
 
 
-int	mouse_hook(int button, int x, int y, t_benv *be);
-int	key_hook(int keycode, t_benv *be);
-int	coucou(t_benv be);
-int	expose_hook(t_benv *be);
-int	ft_keycode(int keycode, t_benv be);
-t_env   ft_init_env();
-void	ft_set_pixel(t_benv *be);
+int		mouse_hook_ju(int button, int x, int y, t_benv *be);
+int		key_hook_ju(int keycode, t_benv *be);
+int		call_ju(t_benv be);
+int		expose_hook_ju(t_benv *be);
+t_env   ft_init_env_ju(t_benv be);
+void	ft_draw_ju(t_benv *be);
+int		main_ju(t_benv be);
+int		motion_hook(int x, int y, t_benv *be);
 
+int		mouse_hook_mandel(int button, int x, int y, t_benv *be);
+int		key_hook_mandel(int keycode, t_benv *be);
+int		call_mandel(t_benv be);
+int		expose_hook_mandel(t_benv *be);
+t_env   ft_init_env_mandel(t_benv be);
+void	ft_draw_mandel(t_benv *be);
+int		main_mandel(t_benv be);
 #endif
