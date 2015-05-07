@@ -56,10 +56,10 @@ void ft_draw_mandel(t_benv *be)
 				e.z_i = 2 * e.z_i * e.tmp + e.c_i;
 				e.i += 1;
 			}
-				be->data[e.y * be->size_line + 4 * e.x + 0] = 0*mlx_get_color_value(be->mlx,  e.i * 0x00ff00 / e.ite_max);
+				be->data[e.y * be->size_line + 4 * e.x + 0] = b * mlx_get_color_value(be->mlx,  e.i * 0x00ff00 / e.ite_max);
 
-				be->data[e.y * be->size_line + 4 * e.x + 1] =mlx_get_color_value(be->mlx,  e.i * 0xffff00 / e.ite_max);
-				be->data[e.y * be->size_line + 4 * e.x + 2] = mlx_get_color_value(be->mlx,  e.i * 0x00ff00 / e.ite_max);
+				be->data[e.y * be->size_line + 4 * e.x + 1] = g * mlx_get_color_value(be->mlx,  e.i * 0xffff00 / e.ite_max);
+				be->data[e.y * be->size_line + 4 * e.x + 2] = r * mlx_get_color_value(be->mlx,  e.i * 0x00ff00 / e.ite_max);
 
 			e.y += 1;
 		}
