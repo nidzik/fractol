@@ -6,7 +6,7 @@
 /*   By: nidzik <nidzik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/05 07:44:28 by nidzik            #+#    #+#             */
-/*   Updated: 2015/05/05 08:46:19 by nidzik           ###   ########.fr       */
+/*   Updated: 2015/05/07 16:39:40 by lebijuu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 int mouse_hook_ju(int button, int x, int y, t_benv *be)
 {
+	printf("%f\n", be->factor);fflush(stdout);
     if (button == 4)
     {
         be->factor *= 1.1;
@@ -36,7 +37,6 @@ int mouse_hook_ju(int button, int x, int y, t_benv *be)
 
 int motion_hook(int x, int y, t_benv *be)
 {
-	printf("f");fflush(stdout);
 	mlx_mouse_hook(be->win, mouse_hook_ju, be);
     if (be->stop == 0)
     {
