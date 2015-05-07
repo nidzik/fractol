@@ -6,7 +6,7 @@
 /*   By: nidzik <nidzik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/05 08:10:56 by nidzik            #+#    #+#             */
-/*   Updated: 2015/05/05 08:11:59 by nidzik           ###   ########.fr       */
+/*   Updated: 2015/05/07 15:33:14 by lebijuu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,24 @@ void ft_draw_mandel(t_benv *be)
 				e.z_i = 2 * e.z_i * e.tmp + e.c_i;
 				e.i += 1;
 			}
-				be->data[(800 * e.y + e.x) * 4 + 1] = (50 + e.i * 1.5);
+			if (e.i == e.ite_max && (e.y * be->size_line + 4 * e.x) < (be->size_line * w_wind))
+				be->data[e.y * be->size_line + 4 * e.x] = 0*mlx_get_color_value(be->mlx, e.i * 0xff0000 / e.ite_max);
+			else //if (e.i == e.ite_max  && (e.y * be->size_line + 4 * e.x) < (be->size_line * w_wind))
+			{
+				be->data[e.y * be->size_line + 4 * e.x + 0] = 0*mlx_get_color_value(be->mlx,  e.i * 0xff0000 / e.ite_max);
+
+				/* be->data[e.y * be->size_line + 4 * e.x + 2] = mlx_get_color_value(be->mlx,  e.i * 0x00ff00 / e.ite_max); */
+
 				be->data[(800 * e.y + e.x) * 4 + 2] = (50 + e.i * 1.5);
-				be->data[(800 * e.y + e.x) * 4 + 3] = (50 + e.i * 1.5);
+				/* be->data[(800 * e.y + e.x) * 4 + 1] = (50 + e.i * 1.5); */
+			}
+			/* { */
+				be->data[e.y * be->size_line + 4 * e.x + 1] = mlx_get_color_value(be->mlx,  e.i * 0xff0000 / e.ite_max);
+				be->data[e.y * be->size_line + 4 * e.x + 2] = mlx_get_color_value(be->mlx,  e.i * 0xffff00 / e.ite_max);
+				be->data[e.y * be->size_line + 4 * e.x + 3] = mlx_get_color_value(be->mlx,  e.i * 0xff0000 / e.ite_max);
+
+			/* 	be->data[(800 * e.y + e.x) * 4 + 3] = 0*(50 + e.i * 1.5); */
+			/* } */
 			e.y += 1;
 		}
 		e.x += 1;

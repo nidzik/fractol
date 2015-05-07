@@ -6,7 +6,7 @@
 /*   By: nidzik <nidzik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/05 07:59:49 by nidzik            #+#    #+#             */
-/*   Updated: 2015/05/05 08:31:01 by nidzik           ###   ########.fr       */
+/*   Updated: 2015/05/07 15:14:36 by lebijuu          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int mouse_hook_mandel(int button, int x, int y, t_benv *be)
 
 int key_hook_mandel(int keycode, t_benv *be)
 {
+	printf("%d\n", keycode);fflush(stdout);
     if (keycode == 65307)
         exit(0);
     if (keycode == 'q')
@@ -46,13 +47,13 @@ int key_hook_mandel(int keycode, t_benv *be)
         be->factorx1 += 0.1;
     if (keycode == 'x')
         be->factorx2 += 0.01;
-    if (keycode == 'a')
+    if (keycode == 'a' || keycode == 65364)
         be->movey -= 0.1 / be->factor;
-    if (keycode == 'z')
+    if (keycode == 'z' || keycode == 65363)
         be->movex -= 0.1 / be->factor;
-    if (keycode == 'e')
+    if (keycode == 'e' || keycode == 65362)
         be->movey += 0.1 / be->factor;
-    if (keycode == 'r')
+    if (keycode == 'r' || keycode == 65361)
         be->movex += 0.1 / be->factor;
     if (keycode == 't')
         be->factor *= 1.1;
@@ -64,6 +65,8 @@ int key_hook_mandel(int keycode, t_benv *be)
 
 int call_mandel(t_benv be)
 {
+	mlx_clear_window(be.mlx, be.win);
+    be.data = mlx_get_data_addr(be.img, &be.bpp, &be.size_line, &be.endian);
     ft_draw_mandel(&be);
     mlx_put_image_to_window(be.mlx, be.win, be.img, 0, 0 );
     return (0);
@@ -80,6 +83,7 @@ int main_mandel(t_benv be)
     be.mlx = mlx_init();
     be.img = mlx_new_image(be.mlx, l_wind, w_wind);
     be.data = mlx_get_data_addr(be.img, &be.bpp, &be.size_line, &be.endian);
+	printf("%d %d %d ",be.bpp, be.size_line, be.endian);
     be.win = mlx_new_window(be.mlx, l_wind, w_wind, "Mandelbrot");
     mlx_expose_hook(be.win, expose_hook_mandel, &be);
     mlx_key_hook(be.win, key_hook_mandel, &be);
