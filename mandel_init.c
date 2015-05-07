@@ -60,6 +60,7 @@ int key_hook_mandel(int keycode, t_benv *be)
         be->factor *= 1.1;
     if (keycode == 'y')
         be->factor /= 1.1;
+    ft_color(keycode, be);
     expose_hook_mandel(be);
     return (0);
 }

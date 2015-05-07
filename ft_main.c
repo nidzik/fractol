@@ -12,16 +12,24 @@
 
 #include "fractol.h"
 
-int	main(int ac, char **av)
+t_benv		ft_init(t_benv)
 {
-	t_benv be;
-
 	be.factor = 1;
 	be.movex = 0;
 	be.movey = 0;
 	be.factorx1 = 0;
 	be.factorx2 = 0;
 	be.stop = 0;
+	be.r = 0;
+	be.g = 0;
+	be.b = 0;
+}
+
+int	main(int ac, char **av)
+{
+	t_benv be;
+
+	be = ft_init(be);
 	if (ac == 2)
 	{
 		if (av[1][0] == 'j')
@@ -33,9 +41,33 @@ int	main(int ac, char **av)
 		else if (av[1][0] == 'w')
 			main_mandel_wtf(be);
 	}
-	printf("d");fflush(stdout);
 	return (0);
 	
 }
 
+int		ft_color(int keycode, t_benv *be)
+{
+	if (keycode == 114)
+	{
+		if (be.r == 0)
+			be.r = 1;
+		else
+			be.r = 0;
+	}
+	if (keycode == 103)
+	{
+		if (be.g == 0)
+			be.g = 1;
+		else
+			be.g = 0;
+	}
+	if (keycode == 98)
+	{
+		if (be.b == 0)
+			be.b = 1;
+		else
+			be.b = 0;
 
+	}
+	return (0);
+}
