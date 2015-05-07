@@ -12,7 +12,7 @@
 
 #include "fractol.h"
 
-t_benv		ft_init(t_benv)
+t_benv		ft_init(t_benv be)
 {
 	be.factor = 1;
 	be.movex = 0;
@@ -20,9 +20,10 @@ t_benv		ft_init(t_benv)
 	be.factorx1 = 0;
 	be.factorx2 = 0;
 	be.stop = 0;
-	be.r = 0;
-	be.g = 0;
-	be.b = 0;
+	be.r = 1;
+	be.g = 1;
+	be.b = 1;
+	return (be);
 }
 
 int	main(int ac, char **av)
@@ -49,25 +50,24 @@ int		ft_color(int keycode, t_benv *be)
 {
 	if (keycode == 114)
 	{
-		if (be.r == 0)
-			be.r = 1;
+		if (be->r == 0)
+			be->r = 1;
 		else
-			be.r = 0;
+			be->r = 0;
 	}
 	if (keycode == 103)
 	{
-		if (be.g == 0)
-			be.g = 1;
+		if (be->g == 0)
+			be->g = 1;
 		else
-			be.g = 0;
+			be->g = 0;
 	}
 	if (keycode == 98)
 	{
-		if (be.b == 0)
-			be.b = 1;
+		if (be->b == 0)
+			be->b = 1;
 		else
-			be.b = 0;
-
+			be->b = 0;
 	}
 	return (0);
 }

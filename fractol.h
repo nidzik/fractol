@@ -52,7 +52,7 @@ typedef struct	s_benv
 	int		g;
 	int		b;
 }		t_benv;
-int		ft_color(int keycode, t_benv be);
+int		ft_color(int keycode, t_benv *be);
 
 int		mouse_hook_ju(int button, int x, int y, t_benv *be);
 int		key_hook_ju(int keycode, t_benv *be);

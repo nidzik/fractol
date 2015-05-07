@@ -22,9 +22,8 @@ t_env	ft_init_env_ju(t_benv be)
 	e.y2 = 1.2;
 	e.zoom =  (be.factor);
 	e.ite_max = 128; 
-	e.image_x = 800;//(e.x2 - e.x1) * e.zoom;
-	e.image_y = 800;// (e.y2 - e.y1) * e.zoom;
-	/* printf("%f, %f, %f, %f, %d, %d, %d, %d \n ",e.x1, e.x2, e.y1, e.y2, e.zoom, e.ite_max, e.image_x, e.image_y); */
+	e.image_x = 800;
+	e.image_y = 800;
 	return (e);
 }
 
@@ -40,10 +39,8 @@ void ft_draw_ju(t_benv *be)
 		e.y = 0;
 		while (e.y < e.image_y)
 		{
-			e.c_r = be->factorx1; // -0.6
-			e.c_i = be->factorx2; // 0.27015;
-
-
+			e.c_r = be->factorx1;
+			e.c_i = be->factorx2;
 			e.z_r = 1.5 * (e.x - 400) / (0.5 * e.zoom * 800 )+ be->movex;
 			e.z_i =1.5 *  (e.y - 400) / (0.5 * e.zoom * 800 )+ be->movey;
 			e.i = 0;
@@ -63,9 +60,12 @@ void ft_draw_ju(t_benv *be)
 			}
 			else 
 			{
-				be->data[(800 * e.y + e.x) * 4 + 1] = (50 + e.i * 1.5);
-				be->data[(800 * e.y + e.x) * 4 + 2] = (50 + e.i * 1.5);
-				be->data[(800 * e.y + e.x) * 4 + 3] = (50 + e.i * 1.5);
+				be->data[(800 * e.y + e.x) * 4 + 1] = be->r *
+							(50 + e.i * 1.5);
+				be->data[(800 * e.y + e.x) * 4 + 2] = be->g *
+							(50 + e.i * 1.5);
+				be->data[(800 * e.y + e.x) * 4 + 3] = be->b *
+							(50 + e.i * 1.5);
 			}
 			e.y += 1;
 		}

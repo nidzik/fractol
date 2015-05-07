@@ -55,11 +55,14 @@ void ft_draw_mandel_wtf(t_benv *be)
 				e.i += 1;
 			}
 				be->data[e.y * be->size_line + 4 * e.x + 1] =
-				mlx_get_color_value(be->mlx,  e.i * 0xff0000 / e.ite_max);
+				be->r * mlx_get_color_value(be->mlx,  e.i *
+						0xff0000 / e.ite_max);
 				be->data[e.y * be->size_line + 4 * e.x + 2] =
-				0 * mlx_get_color_value(be->mlx,  e.i * 0x0000ff / e.ite_max);
+				be->g * mlx_get_color_value(be->mlx,  e.i *
+						0x0000ff / e.ite_max);
 				be->data[e.y * be->size_line + 4 * e.x + 0] =
-				mlx_get_color_value(be->mlx,  e.i * 0xffff00 / e.ite_max);
+				be->b * mlx_get_color_value(be->mlx,  e.i *
+						0xffff00 / e.ite_max);
 			e.y += 1;
 		}
 		e.x += 1;
