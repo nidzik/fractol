@@ -78,4 +78,13 @@ int		expose_hook_mandelship(t_benv *be);
 t_env   ft_init_env_mandelship(t_benv be);
 void	ft_draw_mandelship(t_benv *be);
 int		main_mandelship(t_benv be);
+
+int		mouse_hook_mandel_wtf(int button, int x, int y, t_benv *be);
+int		key_hook_mandel_wtf(int keycode, t_benv *be);
+int		call_mandel_wtf(t_benv be);
+int		expose_hook_mandel_wtf(t_benv *be);
+t_env   ft_init_env_mandel_wtf(t_benv be);
+void	ft_draw_mandel_wtf(t_benv *be);
+int		main_mandel_wtf(t_benv be);
+
 #endif
