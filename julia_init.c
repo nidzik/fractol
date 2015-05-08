@@ -6,7 +6,7 @@
 /*   By: nidzik <nidzik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/05 07:44:28 by nidzik            #+#    #+#             */
-/*   Updated: 2015/05/07 16:39:40 by lebijuu          ###   ########.fr       */
+/*   Updated: 2015/05/08 17:52:35 by bbichero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int mouse_hook_ju(int button, int x, int y, t_benv *be)
 {
-	printf("%f\n", be->factor);fflush(stdout);
 	if (button == 4)
 	{
 		be->factor *= 1.1;
