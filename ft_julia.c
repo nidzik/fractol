@@ -6,7 +6,7 @@
 /*   By: nidzik <nidzik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/01 16:59:46 by nidzik            #+#    #+#             */
-/*   Updated: 2015/05/09 17:30:43 by bbichero         ###   ########.fr       */
+/*   Updated: 2015/05/09 17:56:38 by nidzik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	ft_draw_ju(t_benv *be)
 			e.z_r = 1.5 * (e.x - 400) / (0.5 * e.zoom * 800) + be->movex;
 			e.z_i = 1.5 * (e.y - 400) / (0.5 * e.zoom * 800) + be->movey;
 			e.i = 0;
+			e = ft_loop_ju(e, be);
 			e.y += 1;
 		}
 		e.x += 1;
