@@ -6,7 +6,7 @@
 /*   By: nidzik <nidzik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/05 07:59:49 by nidzik            #+#    #+#             */
-/*   Updated: 2015/05/09 16:38:59 by bbichero         ###   ########.fr       */
+/*   Updated: 2015/05/09 17:32:45 by bbichero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,9 @@ int		main_mandelship(t_benv be)
 {
 	be.factor = 5;
 	be.mlx = mlx_init();
-	be.img = mlx_new_image(be.mlx, l_wind, w_wind);
+	be.img = mlx_new_image(be.mlx, L_WIND, W_WIND);
 	be.data = mlx_get_data_addr(be.img, &be.bpp, &be.size_line, &be.endian);
-	be.win = mlx_new_window(be.mlx, l_wind, w_wind, "Mandelshipbrot");
+	be.win = mlx_new_window(be.mlx, L_WIND, W_WIND, "Mandelshipbrot");
 	mlx_expose_hook(be.win, expose_hook_mandelship, &be);
 	mlx_key_hook(be.win, key_hook_mandelship, &be);
 	mlx_mouse_hook(be.win, mouse_hook_mandelship, &be);

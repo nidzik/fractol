@@ -6,7 +6,7 @@
 /*   By: nidzik <nidzik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/04 11:41:52 by nidzik            #+#    #+#             */
-/*   Updated: 2015/05/09 16:33:00 by bbichero         ###   ########.fr       */
+/*   Updated: 2015/05/09 17:44:17 by bbichero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int			ft_fillg(int keycode, t_benv *be)
 		else
 			be->filg += be->fff;
 	}
-	if (keycode == 23 || keycode == 53)
+	if (keycode == 23)
 	{
 		if (FF != 0x00ff00 && FF != 0x00ffff && FF != 0xffff00)
 			be->filg += be->ff;
@@ -111,21 +111,21 @@ int			ft_fillg(int keycode, t_benv *be)
 
 int			ft_fillr(int keycode, t_benv *be)
 {
-	if (keycode == 21 || keycode == 55)
+	if (keycode == 26)
 	{
 		if (FF > 0x00ffff)
 			be->filr -= be->fff;
 		else
 			be->filr += be->fff;
 	}
-	if (keycode == 23 || keycode == 56)
+	if (keycode == 28)
 	{
 		if (FF != 0x00ff00 && FF != 0x00ffff && FF != 0xffff00)
 			be->filr += be->ff;
 		else
 			be->filr -= be->ff;
 	}
-	if (keycode == 22 || keycode == 57)
+	if (keycode == 25)
 	{
 		if (FF != 0x0000ff && FF != 0x00ffff && FF != 0xff00ff)
 			be->filr += be->f;

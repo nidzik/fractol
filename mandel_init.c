@@ -6,7 +6,7 @@
 /*   By: nidzik <nidzik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/05 07:59:49 by nidzik            #+#    #+#             */
-/*   Updated: 2015/05/09 16:34:30 by bbichero         ###   ########.fr       */
+/*   Updated: 2015/05/09 17:31:19 by bbichero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ int expose_hook_mandel(t_benv *be)
 int main_mandel(t_benv be)
 {
 	be.mlx = mlx_init();
-	be.img = mlx_new_image(be.mlx, l_wind, w_wind);
+	be.img = mlx_new_image(be.mlx, L_WIND, W_WIND);
 	be.data = mlx_get_data_addr(be.img, &be.bpp, &be.size_line, &be.endian);
-	be.win = mlx_new_window(be.mlx, l_wind, w_wind, "Mandelbrot");
+	be.win = mlx_new_window(be.mlx, L_WIND, W_WIND, "Mandelbrot");
 	mlx_expose_hook(be.win, expose_hook_mandel, &be);
 	mlx_hook(be.win, 6, (1L << 6), motion_hook_mand, &be);
 	mlx_key_hook(be.win, key_hook_mandel, &be);

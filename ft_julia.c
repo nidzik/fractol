@@ -6,7 +6,7 @@
 /*   By: nidzik <nidzik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/01 16:59:46 by nidzik            #+#    #+#             */
-/*   Updated: 2015/05/09 17:22:27 by nidzik           ###   ########.fr       */
+/*   Updated: 2015/05/09 17:30:43 by bbichero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,9 @@ t_env	ft_loop_ju(t_env e, t_benv *be)
 int		main_ju(t_benv be)
 {
 	be.mlx = mlx_init();
-	be.img = mlx_new_image(be.mlx, l_wind, w_wind);
+	be.img = mlx_new_image(be.mlx, L_WIND, W_WIND);
 	be.data = mlx_get_data_addr(be.img, &be.bpp, &be.size_line, &be.endian);
-	be.win = mlx_new_window(be.mlx, l_wind, w_wind, "Julia");
+	be.win = mlx_new_window(be.mlx, L_WIND, W_WIND, "Julia");
 	mlx_expose_hook(be.win, expose_hook_ju, &be);
 	mlx_hook(be.win, 6, (1L << 6), motion_hook, &be);
 	mlx_key_hook(be.win, key_hook_ju, &be);
