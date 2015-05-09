@@ -4,9 +4,6 @@
 # define FRACTOL_H
 
 #define			FF	(be->f + be->ff + be->fff)
-#define			rg	(be->r > 0 && be->g > 0)
-#define			gb	(be->g > 0 && be->b > 0)
-#define			rb	(be->r > 0 && be->b > 0)
 #define		l_wind	800
 #define		w_wind	800
 #include <unistd.h>
@@ -53,17 +50,21 @@ typedef struct	s_benv
 	double			movex;
 	double			movey;
 	int			stop;
-	int		r;
-	int		g;
-	int		b;
-	int		fil;
+	int		filr;
+	int		filg;
+	int		filb;
 	int		f;
 	int		ff;
 	int		fff;
+	int		r;
+	int		g;
+	int		b;
 }				t_benv;
 
 int		ft_color(int keycode, t_benv *be);
-int		ft_fill(int keycode, t_benv *be);
+int		ft_fillr(int keycode, t_benv *be);
+int		ft_fillg(int keycode, t_benv *be);
+int		ft_fillb(int keycode, t_benv *be);
 
 int		mouse_hook_ju(int button, int x, int y, t_benv *be);
 int		key_hook_ju(int keycode, t_benv *be);

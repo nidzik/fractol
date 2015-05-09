@@ -23,10 +23,12 @@ t_benv		ft_init(t_benv be)
 	be.r = 1;
 	be.g = 1;
 	be.b = 1;
-	be.fil = 0x000000;
+	be.filr = 0x000000;
+	be.filg = 0x000000;
+	be.filb = 0x000000;
 	be.f = 0x0000ff;
 	be.ff = 0x00ff00;
-	be.fff= 0xff0000;
+	be.fff = 0xff0000;
 	return (be);
 }
 
@@ -78,52 +80,78 @@ int		ft_color(int keycode, t_benv *be)
 
 int		ft_fillb(int keycode, t_benv *be)
 {
-	if (keycode == 18)
+	if (keycode == 18 || keycode == 49)
 	{
 		if (FF > 0x00ffff)
-			be->fil -= be->fff;
+			be->filb -= be->fff;
 		else
-			be->fil += be->fff;
+			be->filb += be->fff;
 	}
-	if (keycode == 19)
+	if (keycode == 19 || keycode == 50)
 	{
 		if (FF != 0x00ff00 && FF != 0x00ffff && FF != 0xffff00)
-			be->fil += be->ff;
+			be->filb += be->ff;
 		else
-			be->fil -= be->ff;
+			be->filb -= be->ff;
 	}
-	if (keycode == 20)
+	if (keycode == 20 || keycode == 51)
 	{
 		if (FF != 0x0000ff && FF != 0x00ffff && FF != 0xff00ff)
-			be->fil += be->f;
+			be->filb += be->f;
 		else
-			be->fil -= be->f;
+			be->filb -= be->f;
 	}
 	return (0);
 }
 
 int		ft_fillg(int keycode, t_benv *be)
 {
-	if (keycode == 21)
+	if (keycode == 21 || keycode == 52)
 	{
 		if (FF > 0x00ffff)
-			be->fil -= be->fff;
+			be->filg -= be->fff;
 		else
-			be->fil += be->fff;
+			be->filg += be->fff;
 	}
-	if (keycode == 23)
+	if (keycode == 23 || keycode == 53)
 	{
 		if (FF != 0x00ff00 && FF != 0x00ffff && FF != 0xffff00)
-			be->fil += be->ff;
+			be->filg += be->ff;
 		else
-			be->fil -= be->ff;
+			be->filg -= be->ff;
 	}
-	if (keycode == 22)
+	if (keycode == 22 || keycode == 54)
 	{
 		if (FF != 0x0000ff && FF != 0x00ffff && FF != 0xff00ff)
-			be->fil += be->f;
+			be->filg += be->f;
 		else
-			be->fil -= be->f;
+			be->filg -= be->f;
+	}
+	return (0);
+}
+
+int		ft_fillr(int keycode, t_benv *be)
+{
+	if (keycode == 21 || keycode == 55)
+	{
+		if (FF > 0x00ffff)
+			be->filr -= be->fff;
+		else
+			be->filr += be->fff;
+	}
+	if (keycode == 23 || keycode == 56)
+	{
+		if (FF != 0x00ff00 && FF != 0x00ffff && FF != 0xffff00)
+			be->filr += be->ff;
+		else
+			be->filr -= be->ff;
+	}
+	if (keycode == 22 || keycode == 57)
+	{
+		if (FF != 0x0000ff && FF != 0x00ffff && FF != 0xff00ff)
+			be->filr += be->f;
+		else
+			be->filr -= be->f;
 	}
 	return (0);
 }
