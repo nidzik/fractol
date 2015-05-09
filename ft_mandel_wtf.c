@@ -6,7 +6,7 @@
 /*   By: nidzik <nidzik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/05 08:10:56 by nidzik            #+#    #+#             */
-/*   Updated: 2015/05/08 17:52:30 by bbichero         ###   ########.fr       */
+/*   Updated: 2015/05/09 16:53:11 by nidzik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_env	ft_init_env_mandel_wtf(t_benv be)
 	return (e);
 }
 
-void ft_draw_mandel_wtf(t_benv *be)
+void	ft_draw_mandel_wtf(t_benv *be)
 {
 	t_env e;
 
@@ -46,25 +46,31 @@ void ft_draw_mandel_wtf(t_benv *be)
 			e.z_r = 0;
 			e.z_i = 0;
 			e.i = 0;
-			while ((e.z_r * e.z_r + e.z_i * e.z_i < 4 && e.i <
-							e.ite_max) || e.i == 0)
-			{
-				e.tmp = e.z_r;
-				e.z_r = e.z_r * e.z_r - e.z_i * e.z_i + e.c_r;
-				e.z_i = fabs(2 * e.z_i * e.tmp + e.c_i);
-				e.i += 1;
-			}
-				be->data[e.y * be->size_line + 4 * e.x + 1] =
-				be->r * mlx_get_color_value(be->mlx,  e.i *
-						0xff0000 / e.ite_max);
-				be->data[e.y * be->size_line + 4 * e.x + 2] =
-				be->g * mlx_get_color_value(be->mlx,  e.i *
-						0x0000ff / e.ite_max);
-				be->data[e.y * be->size_line + 4 * e.x + 0] =
-				be->b * mlx_get_color_value(be->mlx,  e.i *
-						0xffff00 / e.ite_max);
+			ft_loop_mandel(e, be);
 			e.y += 1;
 		}
 		e.x += 1;
-	} 
+	}
+}
+
+t_env	ft_loop_mandel_wtf(t_env e, t_benv *be)
+{
+	while ((e.z_r * e.z_r + e.z_i * e.z_i < 4 && e.i <
+			e.ite_max) || e.i == 0)
+	{
+		e.tmp = e.z_r;
+		e.z_r = e.z_r * e.z_r - e.z_i * e.z_i + e.c_r;
+		e.z_i = fabs(2 * e.z_i * e.tmp + e.c_i);
+		e.i += 1;
+	}
+	be->data[e.y * be->size_line + 4 * e.x + 1] =
+		be->r * mlx_get_color_value(be->mlx,
+						e.i * 0xff0000 / e.ite_max);
+	be->data[e.y * be->size_line + 4 * e.x + 2] =
+		be->g * mlx_get_color_value(be->mlx,
+						e.i * 0x0000ff / e.ite_max);
+	be->data[e.y * be->size_line + 4 * e.x + 0] =
+		be->b * mlx_get_color_value(be->mlx,
+					e.i * 0xffff00 / e.ite_max);
+	return (e);
 }
