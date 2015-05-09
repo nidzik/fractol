@@ -6,33 +6,13 @@
 /*   By: nidzik <nidzik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/04 11:41:52 by nidzik            #+#    #+#             */
-/*   Updated: 2015/05/08 17:52:11 by bbichero         ###   ########.fr       */
+/*   Updated: 2015/05/09 16:33:00 by bbichero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-t_benv		ft_init(t_benv be)
-{
-	be.factor = 1;
-	be.movex = 0;
-	be.movey = 0;
-	be.factorx1 = 0;
-	be.factorx2 = 0;
-	be.stop = 0;
-	be.r = 1;
-	be.g = 1;
-	be.b = 1;
-	be.filr = 0x000000;
-	be.filg = 0x000000;
-	be.filb = 0x000000;
-	be.f = 0x0000ff;
-	be.ff = 0x00ff00;
-	be.fff = 0xff0000;
-	return (be);
-}
-
-int	main(int ac, char **av)
+int			main(int ac, char **av)
 {
 	t_benv be;
 
@@ -49,10 +29,9 @@ int	main(int ac, char **av)
 			main_mandel_wtf(be);
 	}
 	return (0);
-	
 }
 
-int		ft_color(int keycode, t_benv *be)
+int			ft_color(int keycode, t_benv *be)
 {
 	if (keycode == 114 || keycode == 15)
 	{
@@ -78,7 +57,7 @@ int		ft_color(int keycode, t_benv *be)
 	return (0);
 }
 
-int		ft_fillb(int keycode, t_benv *be)
+int			ft_fillb(int keycode, t_benv *be)
 {
 	if (keycode == 18 || keycode == 49)
 	{
@@ -104,7 +83,7 @@ int		ft_fillb(int keycode, t_benv *be)
 	return (0);
 }
 
-int		ft_fillg(int keycode, t_benv *be)
+int			ft_fillg(int keycode, t_benv *be)
 {
 	if (keycode == 21 || keycode == 52)
 	{
@@ -130,7 +109,7 @@ int		ft_fillg(int keycode, t_benv *be)
 	return (0);
 }
 
-int		ft_fillr(int keycode, t_benv *be)
+int			ft_fillr(int keycode, t_benv *be)
 {
 	if (keycode == 21 || keycode == 55)
 	{

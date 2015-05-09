@@ -6,7 +6,7 @@
 /*   By: nidzik <nidzik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/05 07:59:49 by nidzik            #+#    #+#             */
-/*   Updated: 2015/05/08 17:52:21 by bbichero         ###   ########.fr       */
+/*   Updated: 2015/05/09 16:34:30 by bbichero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int mouse_hook_mandel(int button, int x, int y, t_benv *be)
 {
-
 	if (button == 4)
 	{
 		be->factor *= 1.1;
@@ -37,8 +36,7 @@ int mouse_hook_mandel(int button, int x, int y, t_benv *be)
 
 int key_hook_mandel(int keycode, t_benv *be)
 {
-	printf("%d\n", keycode);fflush(stdout);
-	if (keycode == 65307)// || keycode == 53)
+	if (keycode == 53)
 		exit(0);
 	if (keycode == 125 || keycode == 65364)
 		be->movey -= 0.1 / be->factor;
@@ -59,7 +57,7 @@ int key_hook_mandel(int keycode, t_benv *be)
 int call_mandel(t_benv be)
 {
 	ft_draw_mandel(&be);
-	mlx_put_image_to_window(be.mlx, be.win, be.img, 0, 0 );
+	mlx_put_image_to_window(be.mlx, be.win, be.img, 0, 0);
 	return (0);
 }
 
@@ -74,10 +72,9 @@ int main_mandel(t_benv be)
 	be.mlx = mlx_init();
 	be.img = mlx_new_image(be.mlx, l_wind, w_wind);
 	be.data = mlx_get_data_addr(be.img, &be.bpp, &be.size_line, &be.endian);
-	//printf("%d %d %d ",be.bpp, be.size_line, be.endian);
 	be.win = mlx_new_window(be.mlx, l_wind, w_wind, "Mandelbrot");
 	mlx_expose_hook(be.win, expose_hook_mandel, &be);
-	mlx_hook(be.win, 6, (1L<<6), motion_hook_mand, &be);
+	mlx_hook(be.win, 6, (1L << 6), motion_hook_mand, &be);
 	mlx_key_hook(be.win, key_hook_mandel, &be);
 	mlx_mouse_hook(be.win, mouse_hook_mandel, &be);
 	mlx_loop(be.mlx);
