@@ -6,7 +6,7 @@
 /*   By: nidzik <nidzik@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/05 07:44:28 by nidzik            #+#    #+#             */
-/*   Updated: 2015/05/09 16:36:05 by bbichero         ###   ########.fr       */
+/*   Updated: 2015/05/09 17:21:37 by nidzik           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,19 +67,5 @@ int call_ju(t_benv be)
 int expose_hook_ju(t_benv *be)
 {
 	call_ju(*be);
-	return (0);
-}
-
-int main_ju(t_benv be)
-{
-	be.mlx = mlx_init();
-	be.img = mlx_new_image(be.mlx, l_wind, w_wind);
-	be.data = mlx_get_data_addr(be.img, &be.bpp, &be.size_line, &be.endian);
-	be.win = mlx_new_window(be.mlx, l_wind, w_wind, "Julia");
-	mlx_expose_hook(be.win, expose_hook_ju, &be);
-	mlx_hook(be.win, 6, (1L << 6), motion_hook, &be);
-	mlx_key_hook(be.win, key_hook_ju, &be);
-	mlx_mouse_hook(be.win, mouse_hook_ju, &be);
-	mlx_loop(be.mlx);
 	return (0);
 }
